@@ -1,0 +1,27 @@
+.main-header .logo {
+  font-family: "Calibri", Calibri, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.skin-blue .main-header .logo {
+          background-color: #3c8dbc;
+        }
+        .skin-blue .main-header .logo:hover {
+          background-color: #3c8dbc;
+        }
+        
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: left;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+
