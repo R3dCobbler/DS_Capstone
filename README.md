@@ -27,3 +27,8 @@ Slide Deck
 - How would you describe the experience of using this app?
 - Does the app present a novel approach and/or is particularly well done?
 - Would you hire this person for your own data science startup company?
+
+#### Links
+
+- Application:  [WordGuess Application](https://r3dcobbler.shinyapps.io/wordguess/)  
+
