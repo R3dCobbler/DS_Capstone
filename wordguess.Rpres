@@ -1,0 +1,78 @@
+Predicting text with WordGuess
+========================================================
+author: R3dCobbler (Mick Sheahan)
+date:   8 Sep 2018
+width:  1440  
+height: 900  
+transition: rotate  
+font-family: 'Verdana'
+
+Introduction
+========================================================
+
+Text prediction models are being increasingly used as we are using digital technology more and more.    
+
+An example could be if Freddie Mercury would have typed, "I want to"     
+
+The prediction might have been...
+- "break free"
+- "ride my bicycle"
+- "make a supersonic man out of you!"
+
+This presentation though is to showcase a much simpler model which is a prototype of a text generator that could be used, for example, on a mobile phone messaging app.
+
+Given a word or phrase, the application uses a machine learning algorithm to try to predict the next word.
+
+
+Data Processing & Modelling
+========================================================
+
+The source data provided by SwiftKey forms the basis for the Final Capstone project in the JHU Data Science Specialisation.   
+
+Data Pipeline:
+- Take source data of 255Mb of blogs, 257Mb of news, and 319Mb of twitter feeds   
+- Create a sample set (10%) and from this create a training data set of 70% of the sample     
+- Clean the remaining data, removing profanity, punctuation, numbers etc.,   
+- Create a corpus on which to construct N-Gram models.   
+- This is done using several NLP ideas mainly `quanteda` and `tm` packages for R  
+- The N-Gram tables are stored and indexed using `setkey` from the `data.table` package
+
+N-Gram storage:   
+
+WordGuess uses the 1st to 4th order [Markov Chain Model](https://en.wikipedia.org/wiki/Markov_chain).      
+- A Markov Chain Model states that the probability of next state depends only on the present state and not on the previous states    
+
+A good explanation of N-Grams and Markov Chains can be found [here](https://shiffman.net/a2z/markov/)
+
+
+
+Description of Algorithm
+========================================================
+
+- The prediction model used is the ["Stupid Backoff"](http://www.aclweb.org/anthology/D07-1090.pdf) algorithm   
+- This is a simplified version of the [Katz Back-off Model](https://en.wikipedia.org/wiki/Katz%27s_back-off_model) which is a generative N-Gram language model that estimates the conditional probability of a word given its history in the N-Gram. 
+
+![Katz Back Off](Katz.png)
+
+How it works:
+- Predict the next word by starting with a Quadgram using the last 3 words   
+- If this fails, iterate through using Trigram (2 words), Bigram (last word)   
+- If using Bigram does not work, then take the 3 words with the highest frequency from the Unigram
+
+
+
+How to use WordGuess
+========================================================
+
+- Wordguess is a very simple prototype designed for functionality and performance   
+- The user types something in the input box and the algorithm continously generates the top 3 words that could fit   
+- If the user finds a predicted word that suits, it can be clicked which then adds it to the body of text  
+- Try out some simple everyday initial words and keep clicking on predicted words to make a sentence. (There can be some comical outcomes!)   
+
+Next steps:  
+As this is a simple prototype, the application could be improved further in both performance and accuracy by adjusting the sample size and tweaking the prediction model.   
+This can all be done at a later stage, the main purpose for this project was to get a working application taht can accept text input, and then using machine learning techniques, predict the next suitable word.   
+
+Links:   
+- Application:  [WordGuess Application](https://r3dcobbler.shinyapps.io/wordguess/)  
+- Source Files: [GitHub](https://github.com/R3dCobbler/DS_Capstone)
