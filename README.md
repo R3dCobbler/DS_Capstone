@@ -31,6 +31,6 @@ Slide Deck
 #### Links
 
 - Application:  [WordGuess Application](https://r3dcobbler.shinyapps.io/wordguess/)  
-- Presentation: [WordGuess Presentation] (https://rpubs.com/R3dCobbler/417881)
+
 
 
